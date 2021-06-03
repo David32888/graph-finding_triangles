@@ -101,7 +101,7 @@ size_t vec_find(const std::vector<T> &vec, const T& t)
 vertexes_t input_vertexes()
 {
     vertexes_t V;
-    std::cout << "V(" << std::flush;
+    std::cout << "V = {" << std::flush;
     for(std::string vertex; get_string(vertex) != '\n' || !vertex.empty();)
     { 
         if (!vertex.empty())
@@ -116,19 +116,19 @@ vertexes_t input_vertexes()
             std::cout << ", " << std::flush;
         }
     }
-    std::cout << "Ø)" << std::endl;
+    std::cout << "Ø}" << std::endl;
     return V;
 }
 
 edges_t input_edges(const vertexes_t& vertexes)
 {
     edges_t E;
-    std::cout << "E(" << std::flush;
+    std::cout << "E = {" << std::flush;
     for (size_t max_size_E = vertexes.size() * (vertexes.size() - 1) / 2; E.size() < max_size_E;)
     {
         std::string vertex1, vertex2;
         std::pair<size_t, size_t> edge;
-        std::cout << "(" << std::flush;
+        std::cout << "{" << std::flush;
         while(get_string(vertex1) != '\n' && vertex1.empty());
         if (vertex1.empty())
         {
@@ -137,28 +137,28 @@ edges_t input_edges(const vertexes_t& vertexes)
         }
         if (!(edge.first = vec_find(vertexes, vertex1)))
         {
-            std::cout << " , Ø) " << std::flush;
-            reprint(std::string("(" + vertex1 + ", Ø) "));
+            std::cout << " , Ø} " << std::flush;
+            reprint(std::string("{" + vertex1 + ", Ø} "));
             continue;
         }
         std::cout << ", " << std::flush;
         while(get_string(vertex2) != '\n' && vertex2.empty());
         if (vertex2.empty())
         {
-            std::cout << " Ø) " << std::flush;
-            reprint(std::string("(" + vertex1 + ", Ø) "));
+            std::cout << " Ø} " << std::flush;
+            reprint(std::string("{" + vertex1 + ", Ø} "));
             continue;
         }
         if (vertex1 == vertex2 || !(edge.second = vec_find(vertexes, vertex2)) || vec_find(E, edge))
         {
-            std::cout << ") ";
-            reprint(std::string("(" + vertex1 + ", " + vertex2 + ") "));
+            std::cout << "} ";
+            reprint(std::string("{" + vertex1 + ", " + vertex2 + "} "));
             continue;
         } 
-        std::cout << "), " << std::flush; 
+        std::cout << "}, " << std::flush; 
         E.push_back(edge);
     }
-    std::cout << "Ø)" << std::endl;
+    std::cout << "Ø}" << std::endl;
     return E;
 }
 
