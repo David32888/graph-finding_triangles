@@ -222,26 +222,6 @@ matrix_t graph_to_matrix(const graph_t& graph)
     return matrix;
 }
 
-void print_vertexes(const vertexes_t& vertexes)
-{
-    std::cout << "V(";
-    for (size_t i = 0; i < vertexes.size(); ++i)
-    {
-        std::cout << vertexes[i] << ", ";
-    }
-    std::cout << "Ø)" << std::flush;
-}
-
-void print_edges(const edges_t& edges)
-{
-    std::cout << "E(";
-    for (size_t i = 0; i < edges.size(); ++i)
-    {
-        std::cout << "(" << edges[i].first << ", " << edges[i].second << "), ";
-    }
-    std::cout << "Ø)" << std::flush;
-}
-
 void print_matrix(const matrix_t& matrix)
 {
     for (size_t i = 0; i < matrix.size(); ++i)
